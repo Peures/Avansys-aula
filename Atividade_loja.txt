@@ -1,0 +1,18 @@
+CREATE DATABASE Loja;
+
+CREATE TABLE cliente(
+	id_cliente SERIAL NOT NULL,
+	nome_cliente VARCHAR(30) NOT NULL,
+	PRIMARY KEY (id_cliente)
+);
+
+CREATE TABLE pedido(
+	id_pedido SERIAL NOT NULL,
+	pe_id_cliente INTEGER NOT NULL,
+	produto VARCHAR(30) NOT NULL,
+	PRIMARY KEY (id_pedido),
+	CONSTRAINT fk_cliente_pedido FOREIGN KEY (pe_id_cliente) REFERENCES cliente(id_cliente)
+);
+
+INSERT INTO cliente(nome_cliente) VALUES ('Reginaldo');
+INSERT INTO pedido(produto, pe_id_cliente) VALUES ('Sabonete', 1);
